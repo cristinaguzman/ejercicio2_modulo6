@@ -1,50 +1,52 @@
-# React + TypeScript + Vite
+Hospital PWA
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Descripción
+Este proyecto es una aplicación web progresiva (PWA) desarrollada en React para la gestión de almacenamiento de datos en la web del hospital. Implementa LocalStorage, SessionStorage e IndexedDB para la persistencia de datos y utiliza un Service Worker personalizado para habilitar la funcionalidad offline.
 
-Currently, two official plugins are available:
+Tecnologías Utilizadas
+React.js
+LocalStorage y SessionStorage
+IndexedDB con la biblioteca idb
+Service Workers
+Lighthouse para evaluación de rendimiento
+Instalación
+Requisitos previos
+Node.js instalado
+npm o yarn
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Instalar dependencias
+npm install
+Uso
 
-## Expanding the ESLint configuration
+Ejecutar en modo desarrollo
+npm start
+La aplicación se ejecutará en http://localhost:3000/.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Construir para producción
+npm run build
+Funcionalidades Implementadas
 
-- Configure the top-level `parserOptions` property like this:
+1. Almacenamiento Web (LocalStorage & SessionStorage)
+Permite almacenar y recuperar datos de usuario entre sesiones.
+Se implementa en src/storage.js.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+2. Almacenamiento en IndexedDB
+Base de datos para gestionar información de citas, doctores o pacientes.
+Implementado con la biblioteca idb en src/indexedDB.js.
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+3. Service Worker
+Gestión de caché para acceso offline.
+Implementado en public/sw.js.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+4. Pruebas con Lighthouse
+Evaluación del rendimiento y accesibilidad de la PWA.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+Para ejecutar:
+npx serve -s build
+Abrir Chrome DevTools > Lighthouse > Generar reporte.
+Despliegue
+Puedes desplegar la aplicación en Vercel o Netlify.
+
+Autor
+Desarrollado por Cristina para el ejercicio práctico del módulo 6.
+
